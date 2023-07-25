@@ -1,0 +1,23 @@
+CREATE TABLE customer (
+	customer_id SERIAL PRIMARY KEY,
+	first_name VARCHAR(150) NOT NULL,
+	last_name VARCHAR(150) NOT NULL,
+	email VARCHAR(150) UNIQUE NOT NULL,
+	phone VARCHAR(15) NOT NULL
+);
+CREATE TABLE lawyer (
+	lawyer_id SERIAL PRIMARY KEY,
+	first_name VARCHAR(150) NOT NULL,
+	last_name VARCHAR(150) NOT NULL,
+	email VARCHAR(150) UNIQUE NOT NULL,
+	phone VARCHAR(15) NOT NULL
+);
+CREATE TABLE demand (
+	demand_id SERIAL PRIMARY KEY,
+	lawyer_id INT NOT NULL,
+	periodo VARCHAR(150) NOT NULL,
+	estado VARCHAR(150) NOT NULL,
+	customer_id INT NOT NULL,
+	FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
+	FOREIGN KEY (lawyer_id) REFERENCES lawyer(lawyer_id)
+);
